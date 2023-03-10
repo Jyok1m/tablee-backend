@@ -45,7 +45,7 @@ router.post("/pay/:bookingId", async function (req, res) {
       receipt_email: customer.email,
       amount: chargeableAmount * 100,
       currency: "eur",
-      description: `Repas du ${moment(bookingDate).locale("fr").format("LL")} chez ${restaurant.name}`
+      description: `Repas du ${moment(bookingDate).format("DD/MM/YYYY")} chez ${restaurant.name}`
     });
     // Update la BDD:
     await Booking.findByIdAndUpdate(bookingId, {paid: true});
